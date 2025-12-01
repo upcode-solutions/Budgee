@@ -1,50 +1,57 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import React from 'react'
+import { useThemeContext } from '../context/ThemeContext'
 
-import { useThemeContext } from "../context/ThemeContext";
+import ScreenOne from './MainScreenTabs/ScreenOne'
+import ScreenThree from './MainScreenTabs/ScreenThree'
+import ScreenTwo from './MainScreenTabs/ScreenTwo'
 
-import { ColorScheme } from "../types/ThemeTypes";
-
-import PriceModal from "../components/modals/PriceModal";
+const Tab = createBottomTabNavigator()
 
 export default function Index() {
-  const { colors } = useThemeContext();
-  const design = styles(colors);
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [value, setValue] = useState(0);
+  const { colors } = useThemeContext()
 
   return (
-    <View style={design.container}>
-      <Text>PHP {value}</Text>
-      <TouchableOpacity onPress={() => setIsModalVisible(true)}>
-        <Text>Show Price Modal</Text>
-      </TouchableOpacity>
-      <PriceModal
-        isModalVisible={isModalVisible}
-        setIsModalVisible={setIsModalVisible}
-        price={value}
-        setPrice={setValue}
-      />
-      <TouchableOpacity onPress={() => setValue(value + 1)}>
-      </TouchableOpacity>
-    </View>
-  );
-}
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName: any = 'home'
 
-const styles = (colors: ColorScheme) =>
-  StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: colors.background,
-    },
-    modelBackground: {
-      padding: 20,
-      borderRadius: 10,
-      backgroundColor: colors.background,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  });
+          if (route.name === 'ScreenOne') {
+            iconName = 'home'
+          } else if (route.name === 'ScreenTwo') {
+            iconName = 'wallet'
+          } else if (route.name === 'ScreenThree') {
+            iconName = 'cog'
+          }
+
+          return <MaterialCommunityIcons name={iconName} size={size} color={color} />
+        },
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: '#888',
+        tabBarStyle: {
+          backgroundColor: colors.background,
+          borderTopColor: '#ddd',
+        },
+      })}
+    >
+      <Tab.Screen
+        name="ScreenOne"
+        component={ScreenOne}
+        options={{ title: 'Home' }}
+      />
+      <Tab.Screen
+        name="ScreenTwo"
+        component={ScreenTwo}
+        options={{ title: 'Wallet' }}
+      />
+      <Tab.Screen
+        name="ScreenThree"
+        component={ScreenThree}
+        options={{ title: 'Settings' }}
+      />
+    </Tab.Navigator>
+  )
+}
