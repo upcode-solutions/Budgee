@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { useThemeContext } from '../context/ThemeContext';
 
+import ListItemView from '@/components/items/ListItemView';
 import AddModal from '@/components/modals/AddModal';
 
 
@@ -12,11 +13,7 @@ export default function Index() {
 
   const { colors } = useThemeContext()
   
-  const [list, setList] = useState<{ label: string; price: number }[]>([
-    { label: 'Item 1', price: 10 },
-    { label: 'Item 2', price: 20 },
-    { label: 'Item 3', price: 30 },
-  ])
+  const [list, setList] = useState<{ label: string; price: number }[]>([])
 
   const [isAddModalVisible, setIsAddModalVisible] = useState(false)
 
@@ -34,9 +31,7 @@ export default function Index() {
         :
         <View style={{ justifyContent: 'center', alignItems: 'center', height: '100%' }}>
           {list.map((item, index) => (
-            <View key={index} style={{ marginBottom: 10 }}>
-              <Text style={{ color: colors.text, fontSize: 16 }}>{item.label}: ${item.price}</Text>
-            </View>
+            <ListItemView key={index} items={item}/>
           ))}
         </View>
       }
