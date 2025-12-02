@@ -12,7 +12,14 @@ export default function ListItemView({ items }: { items: { label: string; price:
 
   return (
     <View style={design.container}>
-      <Text style={{ color: colors.background, fontSize: 16 }}>{items.label} - ${items.price}</Text>
+      <View style={design.labalContainer}>
+        <Text style={design.labelText}>{items.label}</Text>
+      </View>
+      <View style={design.priceContainer}>
+        <Text style={design.priceText}>PHP</Text>
+        <Text style={design.priceText}>{items.price}.00</Text>
+      </View>
+      {/* <Text style={{ color: colors.background, fontSize: 16 }}>{items.label} - ${items.price}</Text> */}
     </View>
   );
 }
@@ -20,12 +27,33 @@ export default function ListItemView({ items }: { items: { label: string; price:
 const styles = (colors: ColorScheme) => StyleSheet.create({
   container: {
     width: '90%',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 10,
+    height: 80,
+    backgroundColor: "rgba(226, 177, 0, 1)",
     borderRadius: 5,
-    padding: 10,
-    backgroundColor: colors.text,
+    overflow: 'hidden',
+  },
+  labalContainer: {
+    width: '100%',
+    backgroundColor: "rgba(213, 167, 0, 1)",
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  labelText: {
+    color: colors.background,
+    fontSize: 14,
+    textTransform: 'uppercase',
+  },
+  priceContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+  },
+  priceText: {
+    color: colors.background,
+    fontSize: 22,
   },
 });
