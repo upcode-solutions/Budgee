@@ -5,8 +5,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { useThemeContext } from '../context/ThemeContext';
 
-import ListItemView from '@/components/Cards/CardList';
+import ListItemView from '@/components/Cards/ListCard';
 import AddModal from '@/components/Modals/AddModal';
+
+import MainCard from '@/components/Cards/MainCard';
 
 
 export default function Index() {
@@ -24,6 +26,12 @@ export default function Index() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
+
+      <MainCard 
+        tab_name='Main'
+        spent={50}
+        budget={200}
+      />
       <View>
         { list.length === 0 ? 
         <View style={{ justifyContent: 'center', alignItems: 'center', height: '100%' }}>
