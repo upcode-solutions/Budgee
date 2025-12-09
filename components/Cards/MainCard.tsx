@@ -20,14 +20,13 @@ export default function MainCard(props: MainCardProps) {
 
 const styles = (colors: ColorScheme) => StyleSheet.create({
     container: {
-        width: '90%',
+        width: '100%',
         height: 150,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
-        backgroundColor: 'rgba(226, 177, 0, 1)',
+        backgroundColor: colors.cardBackground,
         borderRadius: 10,
         padding: 15,
-        elevation: 5,
     },
 })
