@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
  
 import { useThemeContext } from '@/context/ThemeContext';
-import { ColorScheme } from '../../types/ContextTypes';
+import { ColorScheme } from '../../types/contexts/ContextTypes';
 
 export default function MainView({ children }: { children: React.ReactNode }) {
 
@@ -20,9 +20,8 @@ const styles = (colors: ColorScheme) => StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 20,
-    paddingHorizontal: 5,
-    alignItems: 'center',
-    gap: 20,
+    paddingHorizontal: 20,
+    gap: 10,
     backgroundColor: colors.background,
   },
 })

@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { View } from "react-native";
+
 
 import MainView from "@/components/Views/MainView";
 
-import MainCard from "@/components/Cards/MainCard";
-import { MainCardProps } from "@/types/CardTypes";
+import TabsContainer from "@/components/Tabs/TabsContainer";
+import { TabsContainerProps } from "@/types/components/TabsTypes";
 
-export default function index() {
+import MainCard from "@/components/Cards/MainCard";
+import { MainCardProps } from "@/types/components/CardTypes";
+
+export default function Index() {
 
   const data: MainCardProps = {
     tab_name: "Groceries",
@@ -13,8 +18,21 @@ export default function index() {
     budget: 200,
   };
 
+  /* const tabData: TabsContainerProps = {
+    tabNames: [],
+    activeTabIndex: 0,
+  }; */
+
+  const [tabData, setTabData] = useState<TabsContainerProps>({
+    tabNames: [{ tabName: "Groceries" }, { tabName: "Entertainment" }, { tabName: "Utilities" }, { tabName: "Groceries" }],
+    activeTabIndex: 0
+  })
+
   return (
     <MainView>
+      <View style={{ height: 45, flexDirection: 'row', gap: 10 }}>
+        <TabsContainer {...tabData} />
+      </View> 
       <MainCard {...data} />
     </MainView>
   );
