@@ -1,5 +1,6 @@
 interface TabsProps {
     tabName: string;
+    expand?: boolean;
 }
 
 interface TabsContainerProps {

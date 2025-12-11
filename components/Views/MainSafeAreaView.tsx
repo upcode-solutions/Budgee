@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useThemeContext } from "@/context/ThemeContext";
-import { ColorScheme } from "../../types/ContextTypes";
+import { ColorScheme } from "../../types/contexts/ContextTypes";
 
 export default function MainSafeAreaView({ children }: { children: React.ReactNode }) {
   const { colors } = useThemeContext();

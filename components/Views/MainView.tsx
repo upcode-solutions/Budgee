@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
  
 import { useThemeContext } from '@/context/ThemeContext';
-import { ColorScheme } from '../../types/ContextTypes';
+import { ColorScheme } from '../../types/contexts/ContextTypes';
 
 export default function MainView({ children }: { children: React.ReactNode }) {
 
