@@ -5,4 +5,10 @@ interface AddModalProps {
     onAdd: (item: { label: string; price: number }) => void;
 }
 
-export default AddModalProps;
+interface AddTabsProps {
+    isAddTabsViisible: boolean;
+    setIsAddTabsViisible: (value: boolean) => void;
+}
+
+export { AddModalProps, AddTabsProps };
+
