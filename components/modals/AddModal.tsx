@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-nativ
 
 import Modal from "react-native-modal";
 
-import AddModalProps from "../../types/Model_Types";
+import { AddModalProps } from "../../types/components/ModalTypes";
 
 export default function AddModal({
   isAddModalVisible,
