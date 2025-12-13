@@ -8,5 +8,10 @@ interface ColorScheme {
     cardBackground: string;
 }
 
-export { ColorScheme, ThemeType };
+interface ControlTypes {
+    controls: ControlTypes;
+    setControls: React.Dispatch<React.SetStateAction<ControlTypes>>;
+}
+
+export { ColorScheme, ControlTypes, ThemeType };
 

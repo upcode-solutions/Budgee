@@ -27,6 +27,5 @@ const styles = (colors: ColorScheme, size: number) => StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.cardBackground,
-        borderRadius: 10,
     }
 })
