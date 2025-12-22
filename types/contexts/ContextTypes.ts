@@ -1,16 +1,18 @@
-type ThemeType = 'light' | 'dark';
+// Theme Context Types
+
+type ThemeType = "light" | "dark";
 
 interface ColorScheme {
-    background: string;
-    text: string;
-    primary: string;
-
-    cardBackground: string;
+  background: string;
+  text: string;
+  primary: string;
+  cardBackground: string;
+  cardBackgroundSecondary: string;
 }
 
 interface ControlTypes {
-    controls: ControlTypes;
-    setControls: React.Dispatch<React.SetStateAction<ControlTypes>>;
+  children?: React.ReactNode;
+  onRefresh?: () => Promise<void> | void;
 }
 
 export { ColorScheme, ControlTypes, ThemeType };

@@ -1,27 +1,21 @@
+import { Redirect } from 'expo-router';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 
 import { useControlContext } from '../context/ControlContext';
 
-import Signin from './auth/signin';
-import Home from './home/home';
+import Home from './home';
 
 export default function Index() {
-  
-  const { isLoggedIn, setIsLoggedIn } = useControlContext();
-  
+  const { isLoggedIn } = useControlContext();
+
+  if (!isLoggedIn) {
+    return <Redirect href="./auth" />;
+  }
 
   return (
-    <View>
-      <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity onPress={() => setIsLoggedIn(!isLoggedIn)}>
-          <Text>Signin</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setIsLoggedIn(!isLoggedIn)}>
-          <Text>Signin</Text>
-        </TouchableOpacity>
-      </View>
-      { isLoggedIn ? <Home /> : <Signin />}
+    <View style={{ flex: 1 }}>
+      <Home />
     </View>
-  )
+  );
 }

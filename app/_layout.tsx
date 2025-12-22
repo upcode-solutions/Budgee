@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 
-import MainSafeAreaView from "@/components/Views/MainSafeAreaView";
+import MainSafeAreaView from "@/components/View/MainSafeAreaView";
 
 import ControlProvider from "../context/ControlContext";
 import ThemeProvider from "../context/ThemeContext";

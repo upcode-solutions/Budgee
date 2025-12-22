@@ -4,6 +4,7 @@ const lightModeColors = {
     primary: '#1E90FF',
 
     cardBackground: 'rgba(241, 239, 249)',
+    cardBackgroundSecondary: 'rgba(200, 197, 217)',
 };
 
 const darkModeColors = {
@@ -12,6 +13,7 @@ const darkModeColors = {
     primary: '#1E90FF',
 
     cardBackground: 'rgba(50, 46, 64)',
+    cardBackgroundSecondary: 'rgba(80, 75, 99)',
 };
 
 export const light = lightModeColors;
