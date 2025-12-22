@@ -6,6 +6,8 @@ import { useThemeContext } from "@/context/ThemeContext";
 
 import { ColorScheme, ControlTypes } from "@/types/contexts/ContextTypes";
 
+import RefreshIndicator from "./RefreshIndicator";
+
 export default function PullToRefresh({ children, onRefresh }: ControlTypes) {
   const pullY = useRef(new Animated.Value(0)).current;
   const { loading, setLoading } = useControlContext();
@@ -23,7 +25,6 @@ export default function PullToRefresh({ children, onRefresh }: ControlTypes) {
       },
       onPanResponderMove: (_, gestureState) => {
         if (gestureState.dy > 0) {
-          // soften movement a bit
           pullY.setValue(Math.min(gestureState.dy * 0.6, 120));
         }
       },
@@ -66,7 +67,9 @@ export default function PullToRefresh({ children, onRefresh }: ControlTypes) {
 
   return (
     <View style={{ flex: 1 }} {...panResponder.panHandlers}>
-      <Animated.View style={design.container}></Animated.View>
+      <Animated.View style={design.container}>
+        <RefreshIndicator refreshing={loading} pullY={pullY} />
+      </Animated.View>
       <View style={design.content}>{children}</View>
     </View>
   );

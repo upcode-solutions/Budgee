@@ -10,10 +10,17 @@ interface ColorScheme {
   cardBackgroundSecondary: string;
 }
 
+type ControlContextType = {
+  isLoggedIn: boolean;
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 interface ControlTypes {
   children?: React.ReactNode;
   onRefresh?: () => Promise<void> | void;
 }
 
-export { ColorScheme, ControlTypes, ThemeType };
+export { ColorScheme, ControlContextType, ControlTypes, ThemeType };
 

@@ -1,11 +1,6 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
 
-type ControlContextType = {
-  isLoggedIn: boolean;
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import { ControlContextType } from "../types/contexts/ContextTypes";
 
 const ControlContext = createContext<ControlContextType | undefined>(undefined);
 
